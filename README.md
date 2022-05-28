@@ -1,2 +1,12 @@
-# server_with_rest
-A rust server that supports using REST API to showcase my knowledge
+This is the backend for an app that is a board game arcade where people can play online.
+
+The app should include:
+
+Authentication
+
+Authorization
+
+Simple game
+
+Multiplayer
+
