@@ -12,6 +12,7 @@ fn rocket() -> _ {
             "/",
             routes![
                 tictactoe::routes::index,
+                tictactoe::routes::board,
             ],
         )
         .register(

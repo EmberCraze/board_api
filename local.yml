@@ -3,7 +3,7 @@ services:
 
   rocket:
     build: .
-    restart: always
+    # restart: always
     depends_on:
       - db
     ports:
@@ -13,7 +13,7 @@ services:
 
   db:
     image: postgres:14.1
-    restart: always
+    # restart: always
     environment:
       - POSTGRES_USER=boardapi
       - POSTGRES_PASSWORD=password
