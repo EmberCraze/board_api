@@ -1,11 +1,23 @@
-FROM rust:buster as builder
+# Cargo build stage
+FROM rust:buster as build-container
+
+# Fake files for caching
+WORKDIR /usr/src
+RUN USER=root cargo new app
 WORKDIR /usr/src/app
-COPY . .
-RUN cargo install --path .
+# Copy required libraries for our project
+COPY Cargo.lock Cargo.toml Rocket.toml .
+# Compile all required libraries for our project
+# RUN cargo build --release
+RUN cargo build
 
-# Installs the orm cli tool that generates migrations
-# RUN cargo install sea-orm-cli
-# RUN curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux -o /rust-analyzer
-# RUN chmod 755 /rust-analyzer
+#Copy our actual code
+COPY migrations .
+COPY src src/
+# Compile our actual code
+RUN cargo build
+# RUN cargo build --release \
+#     && mv target/release/board_api /bin
 
+# CMD ["/bin/board_api"]
 CMD ["cargo", "run"]

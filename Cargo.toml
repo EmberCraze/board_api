@@ -4,6 +4,10 @@ name = "board_api"
 version = "0.1.0"
 edition = "2021"
 
+[[bin]]
+name = "board_api"
+path = "src/main.rs"
+
 [dependencies]
 rocket = { version = "0.5.0-rc.1", features = ["json", "msgpack"] }
 serde = { version = "1.0.136", features = ["derive"] }

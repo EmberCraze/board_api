@@ -9,7 +9,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-        - rocket:/usr/src/app
+        - rocket:/usr/src/board_api
 
   db:
     image: postgres:14.1
