@@ -4,12 +4,21 @@ name = "board_api"
 version = "0.1.0"
 edition = "2021"
 
+[workspace]
+members = ["."]
+
 [[bin]]
 name = "board_api"
 path = "src/main.rs"
 
 [dependencies]
+async-stream = { version = "^0.3" }
+async-trait = { version = "0.1" }
+futures = { version = "^0.3" }
+futures-util = { version = "^0.3" }
 rocket = { version = "0.5.0-rc.1", features = ["json", "msgpack"] }
 serde = { version = "1.0.136", features = ["derive"] }
 chrono = { version = "0.4.19", features = ["serde"] }
-sea-orm = {version = "0.6", features = ["sqlx-postgres", "runtime-tokio-rustls"] }
+sea-orm = {version = "^0.9.1", features = ["sqlx-postgres", "runtime-tokio-rustls"] }
+sea-orm-rocket = { git = "https://github.com/SeaQL/sea-orm" }
+
